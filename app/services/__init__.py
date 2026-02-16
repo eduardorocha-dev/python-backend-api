@@ -1,1 +1,1 @@
-"""$d package."""
+"""Services package."""

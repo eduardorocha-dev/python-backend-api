@@ -1,1 +1,1 @@
-"""$d package."""
+"""Repositories package."""

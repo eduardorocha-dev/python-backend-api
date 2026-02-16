@@ -14,6 +14,11 @@ Build a professional Python backend API for portfolio and curriculum purposes.
 ## Domain
 Task and Project Management API
 
+## Models Context
+- Cryptids: catalog of mythical creatures (name, classification, description, rarity, last_seen_location).
+- Cryptid Chasers: users who track cryptids and log sightings.
+- Sightings: records linking chasers to cryptids with location, date, and notes.
+
 ## Core Features
 - User registration and authentication (JWT)
 - Project CRUD
