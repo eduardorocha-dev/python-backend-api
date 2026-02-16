@@ -5,10 +5,8 @@ from pydantic import BaseModel, EmailStr
 
 
 class UserBase(BaseModel):
+    username: str
     email: EmailStr
-    display_name: Optional[str] = None
-    image_url: Optional[str] = None
-    is_active: bool = True
 
 
 class UserCreate(UserBase):
@@ -16,15 +14,13 @@ class UserCreate(UserBase):
 
 
 class UserUpdate(BaseModel):
-    display_name: Optional[str] = None
-    image_url: Optional[str] = None
-    is_active: Optional[bool] = None
+    username: Optional[str] = None
+    email: Optional[EmailStr] = None
 
 
 class UserOut(UserBase):
     id: int
     created_at: datetime
-    updated_at: datetime
 
     class Config:
         orm_mode = True

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, DateTime, Integer, String, Text, func
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text, func
 from sqlalchemy.orm import relationship
 
 from app.db.base import Base
@@ -12,15 +12,9 @@ class Cryptid(Base):
     classification = Column(String(100), nullable=True)
     description = Column(Text, nullable=True)
     rarity = Column(String(50), nullable=True)
-    habitat = Column(String(200), nullable=True)
-    image_url = Column(String(500), nullable=True)
-    last_seen_at = Column(DateTime(timezone=True), nullable=True)
+    last_seen_location = Column(String(200), nullable=True)
+    created_by = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
-    updated_at = Column(
-        DateTime(timezone=True),
-        server_default=func.now(),
-        onupdate=func.now(),
-        nullable=False,
-    )
 
     sightings = relationship("Sighting", back_populates="cryptid", cascade="all, delete-orphan")
+    creator = relationship("User", back_populates="cryptids")

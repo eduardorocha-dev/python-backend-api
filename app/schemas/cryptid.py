@@ -9,9 +9,8 @@ class CryptidBase(BaseModel):
     classification: Optional[str] = None
     description: Optional[str] = None
     rarity: Optional[str] = None
-    habitat: Optional[str] = None
-    image_url: Optional[str] = None
-    last_seen_at: Optional[datetime] = None
+    last_seen_location: Optional[str] = None
+    created_by: int
 
 
 class CryptidCreate(CryptidBase):
@@ -23,15 +22,13 @@ class CryptidUpdate(BaseModel):
     classification: Optional[str] = None
     description: Optional[str] = None
     rarity: Optional[str] = None
-    habitat: Optional[str] = None
-    image_url: Optional[str] = None
-    last_seen_at: Optional[datetime] = None
+    last_seen_location: Optional[str] = None
+    created_by: Optional[int] = None
 
 
 class CryptidOut(CryptidBase):
     id: int
     created_at: datetime
-    updated_at: datetime
 
     class Config:
         orm_mode = True
